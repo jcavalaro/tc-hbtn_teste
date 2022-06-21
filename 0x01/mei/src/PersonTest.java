@@ -18,6 +18,12 @@ public class PersonTest {
 
         person = new Person("Paul", "McCartney", date, true, true, true);
     }
+
+    @Test
+    public void show_full_name(){
+        assertEquals("Paul McCartney", person.fullName());
+    }
+
     @Test
     public void test_calculateYearlySalary(){
         person.setSalary(1200);
@@ -26,10 +32,10 @@ public class PersonTest {
 
     @Test
     public void person_is_MEI(){
-       person.setAnotherCompanyOwner(false);
-       person.setPensioner(false);
-       person.setPublicServer(false);
-       assertTrue(person.isMEI());
+        person.setAnotherCompanyOwner(false);
+        person.setPensioner(false);
+        person.setPublicServer(false);
+        assertTrue(person.isMEI());
     }
 
     @Test

@@ -11,7 +11,7 @@ public class Person {
     private float salary;
 
     public String fullName(){
-        return String.format("%s %s", getName() + getSurname());
+        return String.format("%s %s", getName() , getSurname());
     }
 
     public float calculateYearlySalary(){
@@ -22,7 +22,7 @@ public class Person {
         Calendar today = Calendar.getInstance();
 
         int age = today.get(Calendar.YEAR) - birthDate.getYear();
-       //Period age = Period.between(birthDate, LocalDate.now());
+        //Period age = Period.between(birthDate, LocalDate.now());
 
         if(calculateYearlySalary() < 130000 && age >= 18 && isAnotherCompanyOwner() == false && isPensioner() == false && isPublicServer() == false){
             return true;
