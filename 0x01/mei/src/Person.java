@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,13 +19,21 @@ public class Person {
         return getSalary() * 12;
     }
 
-    public boolean isMEI(){
-        Calendar today = Calendar.getInstance();
+    public static int calculateAge(Date bDate) {
+        LocalDate date = bDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate currentDate = LocalDate.now();
 
-        int age = today.get(Calendar.YEAR) - birthDate.getYear();
+        return Period.between(date, currentDate).getYears();
+    }
+
+    public boolean isMEI(){
+        //Calendar today = Calendar.getInstance();
+        //int age = LocalDate.now().getYear() - birthDate.getYear();
+        //age = today.get(Calendar.YEAR) - birthDate.getYear();
         //Period age = Period.between(birthDate, LocalDate.now());
 
-        if(calculateYearlySalary() < 130000 && age >= 18 && isAnotherCompanyOwner() == false && isPensioner() == false && isPublicServer() == false){
+
+        if(calculateYearlySalary() < 130000 && calculateAge(getBirthDate()) >= 18 && isAnotherCompanyOwner() == false && isPensioner() == false && isPublicServer() == false){
             return true;
         }
         return false;
